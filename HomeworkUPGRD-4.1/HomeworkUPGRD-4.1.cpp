@@ -10,12 +10,11 @@ template<typename T>
 T square_mult(T num) {
    return pow(num, 2);
 };
-
-template<typename B>
-void square_vec(B* num, int length) {
+template<typename T = int*>
+void square_mult(T* num, int length) {
     B* newnum = new B[length];
     for (int i = 0; i < length; i++) {
-        newnum[i] = pow(num[i], 2);
+        newnum[i] = square_mult(num[i], 2);
         num[i] = newnum[i];
     }
     delete[] newnum;
