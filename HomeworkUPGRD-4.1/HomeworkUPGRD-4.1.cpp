@@ -2,37 +2,39 @@
 //
 
 #include <iostream>
+#include <vector>
 #include <cmath>
+using namespace std;
 
 
-
-template<typename T>
+template<class T>
 T square_mult(T num) {
-   return pow(num, 2);
+   return num * num;
 };
-template<typename T = int*>
-void square_mult(T* num, int length) {
-    B* newnum = new B[length];
-    for (int i = 0; i < length; i++) {
-        newnum[i] = square_mult(num[i], 2);
-        num[i] = newnum[i];
+
+template<class T>
+vector<T> square_mult(vector<T> vec) {
+    T newnum;
+    for (int i = 0; i < vec.size(); i++) {
+        newnum = vec.at(i) * vec.at(i);
+        vec.at(i) = newnum;
     }
-    delete[] newnum;
+    return vec;
 };
 
 int main()
 {
-        std::cout << "[IN] : " << 4 << std::endl;
+        cout << "[IN] : " << 4 << std::endl;
         std::cout << "[OUT] : " << square_mult(4)<< std::endl;
 
-        int vec[] = {-1, 4, 8};
+        vector<int>vec = {-1, 4, 8};
         std::cout << "[IN] : ";
         for (int i = 0; i < 3; i++) {
             std::cout << vec[i] << " ";
         };
         std::cout << std::endl;
 
-        square_vec(vec,3);
+        vec = square_mult(vec);
 
         std::cout << "[OUT] : ";
         for (int i = 0; i < 3; i++) {
